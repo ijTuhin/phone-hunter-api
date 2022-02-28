@@ -12,6 +12,7 @@ const getResults = () => {
         //showing error message for empty search attempt
         document.getElementById('error-message1').style.display = 'block';
         document.getElementById('error-message2').style.display = 'none';
+        document.getElementById('result-area').textContent = '';
     }
     else {
         // hiding error message
