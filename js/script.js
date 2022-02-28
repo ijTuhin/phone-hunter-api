@@ -8,17 +8,21 @@ const getResults = () => {
     const searchBoxValue = searchBox.value;
     // console.log(searchBox.value, 'search box checked');
 
-    //showing error message for empty search attempt
     if (searchBoxValue == '') {
+        //showing error message for empty search attempt
         document.getElementById('error-message1').style.display = 'block';
+    }
+    else {
+        // hiding error message
+        document.getElementById('error-message1').style.display = 'none';
+        // fetching data from api
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchBoxValue}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayResults(data));
     }
     // clear the input field
     searchBox.value = '';
-    // fetching data from api
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchBoxValue}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayResults(data));
 }
 // displaying searched result
 const displayResults = phones => {
