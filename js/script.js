@@ -11,6 +11,7 @@ const getResults = () => {
     if (searchBoxValue == '') {
         //showing error message for empty search attempt
         document.getElementById('error-message1').style.display = 'block';
+        document.getElementById('error-message2').style.display = 'none';
     }
     else {
         // hiding error message
