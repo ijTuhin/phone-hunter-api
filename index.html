@@ -5,13 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwindcss file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- fontawesome file link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- css style file -->
     <link rel="stylesheet" href="css/style.css">
     <title>Mobile e-commerce</title>
 </head>
 
-<body>
-    <h2>Get <span>your</span> Phone</h2>
+<body class="bg-sky-100">
+    <header>
+        <h2 class="text-center m-4 text-3xl font-semibold">Get <span class="text-lg">your</span> Phone</h2>
+    </header>
+    <main class="m-8">
+        <!-- search-box section -->
+        <section class="flex flex-row justify-center items-center">
+            <input type="text" placeholder="search your desired phone name" id="search-box"
+                class="border border-gray-400 border-l-none rounded-l-lg w-96 px-3 py-2 bg-sky-100" />
+            <button id="search-box-button" class="border border-gray-400 border-r-none rounded-r-lg w-24 px-3 py-2"><i
+                    class="fa fa-search"></i> Search</button>
+            <!-- <div class="border border-gray-400 rounded w-96 px-3 py-2">
+                
+                text-slate-500 basis-1/10 mt-1 px-5 py-1 bg-slate-200 border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none w-50 rounded-md sm:text-sm focus:ring-1
+            </div> -->
+        </section>
+    </main>
+
+    <!-- bootstrap file -->
     <!-- js file -->
     <script src="js/script.js"></script>
 </body>
