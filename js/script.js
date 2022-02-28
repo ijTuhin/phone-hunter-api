@@ -1,0 +1,1 @@
+document.getElementById('error-message').style.display = 'none';
