@@ -27,12 +27,11 @@ const displayResults = phones => {
         document.getElementById('error-message2').style.display = 'block';
     }
     // getting data from api data array
+    const resultArea = document.getElementById('result-area');
+    resultArea.textContent = ''; // to remove previous search result
     for (const phone of phones.data) {
+        document.getElementById('error-message2').style.display = 'none';
         console.log(phone);
-        /* const phoneName = document.getElementById('phone-name');
-        const brandName = document.getElementById('brand-name');
-        phoneName.innerText =  */
-        const resultArea = document.getElementById('result-area');
         const eachResultDiv = document.createElement('div');
         eachResultDiv.classList.add('each-result');
         eachResultDiv.innerHTML = `
