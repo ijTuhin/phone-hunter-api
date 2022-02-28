@@ -21,10 +21,41 @@ const getResults = () => {
         .then(data => displayResults(data));
 }
 // displaying searched result
-const displayResults = phone => {
-    // console.log(phone.status);
+const displayResults = phones => {
     // showing error message for wrong search
-    if (phone.status == false) {
+    if (phones.status == false) {
         document.getElementById('error-message2').style.display = 'block';
     }
+    // getting data from api data array
+    for (const phone of phones.data) {
+        console.log(phone);
+        /* const phoneName = document.getElementById('phone-name');
+        const brandName = document.getElementById('brand-name');
+        phoneName.innerText =  */
+        const resultArea = document.getElementById('result-area');
+        const eachResultDiv = document.createElement('div');
+        eachResultDiv.classList.add('each-result');
+        eachResultDiv.innerHTML = `
+        <div class="border border-none rounded-lg flex flex-col justify-center bg-slate-50">
+                    <!-- Phone image -->
+                    <div class="p-3 flex justify-center">
+                        <img id="result-image" class="md:w-auto md:h-auto"
+                            src="${phone.image}" alt="">
+                    </div>
+                    <!-- phone name & brand name -->
+                    <div>
+                        <p id="phone-name" class="text-xl font-normal px-3">${phone.phone_name}</p>
+                        <p id="brand-name" class="text-lg font-normal px-3">${phone.brand}</p>
+                    </div>
+                    <!-- details button -->
+                    <div class="p-3 flex justify-start">
+                        <button id="detail-button"
+                            class="border border-none rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-500/[0.4] hover:bg-cyan-600 hover:text-white">Details
+                            <i class="material-icons text-cyan-600 hover:text-white">arrow_forward</i></button>
+                    </div>
+        </div>
+                `;
+        resultArea.appendChild(eachResultDiv);
+    }
+
 }
