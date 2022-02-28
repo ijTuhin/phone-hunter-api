@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- tailwindcss file -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- fontawesome file link -->
+    <!-- icon file link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- css style file -->
     <link rel="stylesheet" href="css/style.css">
     <title>Mobile e-commerce</title>
@@ -34,17 +35,19 @@
 
         <!-- result area -->
         <section class="grid grid-cols-3 gap-6 mx-14">
-            <div class="border border-gray-400 rounded p-3 flex justify-center">
-                <img class="pt-2 w-80 h-72" src="image/daniel-korpai-aUmq85-2V7I-unsplash.jpg" alt="">
-            </div>
-            <div class="border border-gray-400 rounded p-3 flex justify-center">
-                <img class="pt-2 w-80 h-72" src="image/francesco-de-tommaso-1bBCtUAUMFI-unsplash.jpg" alt="">
-            </div>
-            <div class="border border-gray-400 rounded p-3 flex justify-center">
-                <img class="pt-2 w-80 h-72" src="image/manik-roy-ZBeAUTL147g-unsplash.jpg" alt="">
-            </div>
-            <div class="border border-gray-400 rounded p-3 flex justify-center">
-                <img class="pt-2 w-80 h-72" src="image/rahul-chakraborty-xsGxhtAsfSA-unsplash.jpg" alt="">
+            <div class="border border-gray-400 rounded-lg flex flex-col justify-center bg-slate-50">
+                <div class="p-3 flex justify-center">
+                    <img id="result-image" class="w-96 h-96" src="image/daniel-korpai-aUmq85-2V7I-unsplash.jpg" alt="">
+                </div>
+                <div>
+                    <p id="phone-name" class="text-2xl font-normal px-3">Phone name</p>
+                    <p id="brand-name" class="text-xl font-normal px-3">Brand name</p>
+                </div>
+                <div class="p-3 flex justify-start">
+                    <button id="search-box-button"
+                        class="border border-gray-400 border-r-none rounded w-24 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between">Details
+                        <i class="material-icons">arrow_forward</i></button>
+                </div>
             </div>
         </section>
     </main>
