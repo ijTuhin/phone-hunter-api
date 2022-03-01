@@ -21,10 +21,7 @@ const getResults = () => {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchBoxValue}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => {
-                displayResults(data);
-                getPhoneId(data);
-            });
+            .then(data => displayResults(data));
     }
     // clear the input field
     searchBox.value = '';
@@ -38,9 +35,10 @@ const displayResults = phones => {
     // getting data from api data array
     const resultArea = document.getElementById('result-area');
     resultArea.textContent = ''; // to remove previous search result
-    for (const phone of phones.data) {
+    const phoneData = phones.data;
+    phoneData.forEach(phone => {
         document.getElementById('error-message2').style.display = 'none';
-        console.log(phone);
+        // console.log(phone);
         const eachResultDiv = document.createElement('div');
         eachResultDiv.classList.add('each-result');
         eachResultDiv.innerHTML = `
@@ -57,24 +55,33 @@ const displayResults = phones => {
                     </div>
                     <!-- details button -->
                     <div class="p-3 flex justify-start">
-                        <button onclick="getDetails()" id="detail-button"
+                        <button onclick="getDetails('${phone.slug}')" id="detail-button"
                             class="border border-none rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-500/[0.4] hover:bg-cyan-600 hover:text-white">Details
                             <i class="material-icons text-cyan-600 hover:text-white">arrow_forward</i></button>
                     </div>
         </div>
                 `;
         resultArea.appendChild(eachResultDiv);
-    }
+        // console.log(phone.slug);
+    })
 }
 
 
 // -------------------*********** getting details from details button
-const getPhoneId = allId => {
-    for (const id of allId.data) {
-        console.log(id.slug);
-    }
-}
-const getDetails = () => {
-    console.log(getPhoneId(), 'details');
+
+const getDetails = phoneId => {
+    // console.log(phoneId);
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayDetails(data));
+}
+const displayDetails = details => {
+    // console.log(details.data.name)
+    if (details.data.releaseDate == '') {
+        // console.log('No release date');
+    }
+    else {
+        // console.log(details.data.releaseDate);
+    }
 }
