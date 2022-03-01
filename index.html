@@ -17,12 +17,13 @@
 
 <body class="bg-sky-100">
     <header>
-        <h2 class="text-center mt-14 text-3xl font-semibold">Get <span class="text-lg font-normal">your</span> Phone
+        <h2 id="top-section" class="text-center mt-14 text-3xl font-semibold">Get <span
+                class="text-lg md:font-semibold font-normal">your</span> Phone
         </h2>
     </header>
-    <main class="container-sm md:mx-28 mx-12 my-4">
+    <main class="container-sm mx-12 my-4">
         <!-- search-box area -->
-        <section class="flex flex-row justify-center items-center mb-8">
+        <section class="flex flex-row justify-center items-center md:mx-28 mb-8">
             <input type="text" placeholder="search your desired phone" id="search-box"
                 class="border border-gray-400 border-l-none rounded-l-lg w-96 px-3 py-3 focus:outline-none bg-sky-100" />
             <button onclick="getResults()" id="search-box-button"
@@ -37,7 +38,7 @@
         </div>
 
         <!-- display details -->
-        <section id="display-detail">
+        <section id="display-detail" class="md:mx-4">
             <div class="eachDetail">
 
                 <!-- <div class="grid md:grid-cols-3 gap-4 md:mr-40">
@@ -74,7 +75,7 @@
         </section>
 
         <!-- result area -->
-        <section id="result-area" class="grid md:grid-cols-3 sm:grid-cols-1 gap-6">
+        <section id="result-area" class="grid md:grid-cols-3 sm:grid-cols-1 gap-6 md:mx-28">
             <!-- <div class="each-result">
                 <div class="border border-none rounded-lg flex flex-col justify-center bg-slate-50">
 
