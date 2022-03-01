@@ -80,18 +80,70 @@ const getDetails = phoneId => {
 }
 const displayDetails = details => {
     console.log(details.data.others);
+    const detailArea = document.getElementById('display-detail');
+    const eachDetails = document.createElement('div');
+    eachDetails.classList.add('eachDetail');
+    detailArea.appendChild(eachDetails);
     if (details.data.releaseDate == '') {
         // details.data.releaseDate = '';
         console.log('Israt', details.data.releaseDate, 'Tuhin');
+        eachDetails.innerHTML = `
+        <div class="grid md:grid-cols-3 gap-0 my-5">
+                    <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
+                        <img id="result-image" class="w-auto h-auto" src="${details.data.image}" alt="">
+                    </div>
+                    <div class="border border-slate-300 md:p-2 p-2">
+                            <p id="phone-name" class="text-2xl font-normal md:px-3 p-2">${details.data.name}</p>
+                            <p id="release-date" class="text-lg font-normal md:px-3 p-2">No release date found</p>
+                            <hr>
+                            <div class="text-lg font-base md:px-3 p-2">
+                            <p id="main-feature" class="text-xl font-normal">Main features:</p>
+                                <p>Storage: <span class="text-sm">${details.data.mainFeatures.storage}</span></p>
+                                <p>Memory: <span class="text-sm">${details.data.mainFeatures.memory}</span></p>
+                                <p>Display-size: <span class="text-sm">${details.data.mainFeatures.displaySize}</span></p>
+                                <p>Chip-set: <span class="text-sm">${details.data.mainFeatures.chipSet}</span></p>
+                                <p>Sensors:</p>
+                            </div>
+                    </div>
+                    <div class="border border-slate-300 md:p-2 p-2">
+                            <div class="text-lg font-base md:px-3 px-2 pt-0">
+                            <p id="others" class="text-xl font-normal">Others:</p>
+                                <p>Bluetooth: <span class="text-sm">${details.data.others.Bluetooth}</span></p>
+                                <p>GPS: <span class="text-sm">${details.data.others.GPS}</span></p>
+                                <p>NFC: <span class="text-sm">${details.data.others.NFC}</span></p>
+                                <p>Radio: <span class="text-sm">${details.data.others.Radio}</span></p>
+                                <p>USB: <span class="text-sm">${details.data.others.USB}</span></p>
+                                <p>WLAN: <span class="text-sm">${details.data.others.WLAN}</span></p>
+                            </div>
+                    </div>
+        </div>
+        `;
     }
     else if (details.data.others == undefined) {
-        console.log('Others item not found')
+        console.log('Others item not found');
+        eachDetails.innerHTML = `
+        <div class="grid md:grid-cols-3 gap-0 my-5">
+                    <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
+                        <img id="result-image" class="w-auto h-auto" src="${details.data.image}" alt="">
+                    </div>
+                    <div class="border border-slate-300 md:p-2 p-2">
+                            <p id="phone-name" class="text-2xl font-normal md:px-3 p-2">${details.data.name}</p>
+                            <p id="release-date" class="text-lg font-normal md:px-3 p-2">Release date: ${details.data.releaseDate}</p>
+                            <hr>
+                            <div class="text-lg font-base md:px-3 p-2">
+                            <p id="main-feature" class="text-xl font-normal">Main features:</p>
+                                <p>Storage: <span class="text-sm">${details.data.mainFeatures.storage}</span></p>
+                                <p>Memory: <span class="text-sm">${details.data.mainFeatures.memory}</span></p>
+                                <p>Display-size: <span class="text-sm">${details.data.mainFeatures.displaySize}</span></p>
+                                <p>Chip-set: <span class="text-sm">${details.data.mainFeatures.chipSet}</span></p>
+                                <p>Sensors:</p>
+                            </div>
+                    </div>
+        </div>
+        `;
     }
     else {
         // console.log(details.data.releaseDate);
-        const detailArea = document.getElementById('display-detail');
-        const eachDetails = document.createElement('div');
-        eachDetails.classList.add('eachDetail');
         eachDetails.innerHTML = `
         <div class="grid md:grid-cols-3 gap-0 my-5">
                     <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
@@ -123,6 +175,5 @@ const displayDetails = details => {
                     </div>
         </div>
         `;
-        detailArea.appendChild(eachDetails);
     }
 }
