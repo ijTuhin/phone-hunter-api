@@ -41,12 +41,13 @@ const displayResults = phones => {
         const eachResultDiv = document.createElement('div');
         eachResultDiv.classList.add('each-result');
         eachResultDiv.innerHTML = `
-            <div class="border border-none rounded-lg flex flex-col justify-center bg-slate-50">
+            <div class="text-white shadow-2xl shadow-slate-600/50 border border-none rounded-xl flex flex-col justify-center bg-slate-50">
                     <!-- Phone image -->
-                    <div class="px-3 py-12 flex justify-center">
+                    <div class="bg-white px-3 py-12 flex justify-center">
                         <img id="result-image" class="md:w-auto md:h-auto"
                             src="${phone.image}" alt="">
                     </div>
+                    <div class="bg-slate-600">
                     <!-- phone name & brand name -->
                     <div class="pt-4">
                         <p id="phone-name" class="text-xl font-normal px-3 pl-3">${phone.phone_name}</p>
@@ -56,9 +57,10 @@ const displayResults = phones => {
                     <div class="p-3 pl-3 flex justify-start">
                         <a href="#top-section" class="no-underline">
                             <button onclick="getDetails('${phone.slug}')" id="detail-button"
-                            class="border border-none rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-500/[0.4] hover:bg-cyan-600 hover:text-white">Details
-                            <i class="material-icons text-cyan-600 hover:text-white">arrow_forward</i></button>
+                            class="border rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-400/[0.4] hover:bg-cyan-500/[0.4] hover:text-white">Details
+                            <i class="material-icons text-white">arrow_forward</i></button>
                         </a>
+                    </div>
                     </div>
             </div>
         `;
@@ -83,11 +85,11 @@ const displayDetails = details => {
     // for no releaseDate & no other info
     if (details.data.releaseDate == '' && details.data.others == undefined) {
         eachDetails.innerHTML = `
-                <div class="grid md:grid-cols-3 gap-0 my-5">
-                    <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
-                        <img id="result-image" class="w-auto h-auto" src="${details.data.image}" alt="">
+                <div class="grid md:grid-cols-3 gap-0 mt-5 mb-12">
+                    <div class="border md:rounded-l-xl md:rounded-tr-none rounded-t-xl border-none bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
+                        <img id="result-image" class="w-auto py-8 h-auto" src="${details.data.image}" alt="">
                     </div>
-                    <div class="border border-slate-300 md:col-span-2 md:p-2 p-2">
+                    <div class="border border-none md:col-span-2 md:p-2 p-2">
                             <p id="phone-name" class="text-2xl font-normal md:px-3 p-2">${details.data.name}</p>
                             <p id="release-date" class="text-lg font-normal md:px-3 p-2">No release date found</p>
                             <hr>
@@ -108,11 +110,11 @@ const displayDetails = details => {
     else if (details.data.releaseDate == '') {
         console.log('Israt', details.data.releaseDate, 'Tuhin');
         eachDetails.innerHTML = `
-                <div class="grid md:grid-cols-3 gap-0 my-5">
-                    <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
-                        <img id="result-image" class="w-auto h-auto" src="${details.data.image}" alt="">
+                <div class="grid md:grid-cols-3 gap-0 mt-5 mb-12">
+                    <div class="border md:rounded-l-xl md:rounded-tr-none rounded-t-xl border-none bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
+                        <img id="result-image" class="w-auto py-8 h-auto" src="${details.data.image}" alt="">
                     </div>
-                    <div class="border border-slate-300 md:col-span-2 md:p-2 p-2">
+                    <div class="border border-none md:col-span-2 md:p-2 p-2">
                             <p id="phone-name" class="text-2xl font-normal md:px-3 p-2">${details.data.name}</p>
                             <p id="release-date" class="text-lg font-normal md:px-3 p-2">No release date found</p>
                             <hr>
@@ -143,11 +145,11 @@ const displayDetails = details => {
     else if (details.data.others == undefined) {
         console.log('Others item not found');
         eachDetails.innerHTML = `
-                <div class="grid md:grid-cols-3 gap-0 my-5">
-                    <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
-                        <img id="result-image" class="w-auto h-auto" src="${details.data.image}" alt="">
+                <div class="grid md:grid-cols-3 gap-0 mt-5 mb-12">
+                    <div class="border md:rounded-l-xl md:rounded-tr-none rounded-t-xl border-none bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
+                        <img id="result-image" class="w-auto py-8 h-auto" src="${details.data.image}" alt="">
                     </div>
-                    <div class="border border-slate-300 md:col-span-2 md:p-2 p-2">
+                    <div class="border border-none md:col-span-2 md:p-2 p-2">
                             <p id="phone-name" class="text-2xl font-normal md:px-3 p-2">${details.data.name}</p>
                             <p id="release-date" class="text-lg font-normal md:px-3 p-2">Release date: ${details.data.releaseDate}</p>
                             <hr>
@@ -166,11 +168,11 @@ const displayDetails = details => {
     // for all info
     else {
         eachDetails.innerHTML = `
-                <div class="grid md:grid-cols-3 gap-0 my-5">
-                    <div class="border md:rounded-l-lg md:rounded-tr-none rounded-t-lg border-slate-300 bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
-                        <img id="result-image" class="w-auto h-auto" src="${details.data.image}" alt="">
+                <div class="shadow-l-2xl grid md:grid-cols-3 gap-0 mt-5 mb-12">
+                    <div class="border md:rounded-l-xl md:rounded-tr-none rounded-t-xl border-none bg-slate-50 md:p-2 p-3 flex md:justify-center justify-start content-center">
+                        <img id="result-image" class="w-auto py-8 h-auto" src="${details.data.image}" alt="">
                     </div>
-                    <div class="border border-slate-300 md:col-span-2 md:p-2 p-2">
+                    <div class="border border-none md:col-span-2 md:p-2 p-2">
                             <p id="phone-name" class="text-2xl font-normal md:px-3 p-2">${details.data.name}</p>
                             <p id="release-date" class="text-lg font-normal md:px-3 p-2">Release date: ${details.data.releaseDate}</p>
                             <hr>
@@ -196,4 +198,5 @@ const displayDetails = details => {
                 </div>
             `;
     }
+
 }
