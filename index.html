@@ -10,24 +10,33 @@
     <!-- icon file link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Orbitron:wght@600&family=Pacifico&family=Praise&display=swap"
+        rel="stylesheet">
     <!-- css style file -->
     <link rel="stylesheet" href="css/style.css">
     <title>Mobile e-commerce</title>
 </head>
 
-<body class="bg-slate-200 text-black">
+<body class="bg-white text-black">
     <header>
-        <h2 id="top-section" class="text-center mt-14 text-3xl font-semibold">Get<span
-                class="text-lg md:font-semibold font-normal">youA</span>Phone</h2>
+        <p id="top-section" class="mt-10 text-center"><span class="text-sky-700 text-lg md:font-semibold font-normal"
+                style="font-family: 'Orbitron', sans-serif;">getyouA</span><span
+                class="text-amber-400 mt-14 text-4xl font-bold"
+                style="font-family: 'Dancing Script', cursive;">Phone</span>
+        </p>
     </header>
-    <main class="container-sm mx-12 my-4">
+    <main class="container-sm mx-12 mt-4 mb-8">
         <!-- search-box area -->
         <section class="flex flex-row justify-center items-center md:mx-28 mb-8">
             <input type="text" placeholder="search your desired phone" id="search-box"
-                class="text-slate-500 border border-gray-400 border-l-none rounded-l-lg w-96 px-3 py-3 focus:outline-none bg-sky-100" />
+                class="text-slate-600 border border-slate-600 hover:border-slate-500 border-l-none rounded-l-lg w-96 px-3 py-2 focus:outline-none bg-slate-100" />
             <button onclick="getResults()" id="search-box-button"
-                class="border border-gray-400 border-r-none rounded-r-lg md:w-24 sm:w-auto px-3 py-3 shadow-sm focus:outline-none focus:ring-1"><i
-                    class="fa fa-search"></i> <span class="md:inline lg:inline hidden">Search</span></button>
+                class="bg-slate-600 hover:bg-slate-500 text-white border border-slate-600 hover:border-slate-500 border-r-none rounded-r-lg md:w-24 sm:w-auto px-3 py-2 shadow-sm focus:outline-none"><i
+                    class="fa fa-search text-white"></i><span class="md:inline lg:inline hidden"> Search</span></button>
         </section>
 
         <!-- for error message -->
@@ -43,7 +52,7 @@
         </section>
 
         <!-- result area -->
-        <section id="result-area" class="grid md:grid-cols-3 sm:grid-cols-1 gap-6 md:mx-28">
+        <section id="result-area" class="grid md:grid-cols-3 sm:grid-cols-1 gap-12 md:mx-28 md:my-12">
         </section>
     </main>
 

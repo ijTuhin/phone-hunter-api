@@ -27,13 +27,15 @@ const getResults = () => {
 }
 // -------------------*********** displaying searched result
 const displayResults = phones => {
+    const resultArea = document.getElementById('result-area');
+    resultArea.textContent = '';
+    const detailArea = document.getElementById('display-detail');
+    detailArea.textContent = '';// to remove previous search result
     // showing error message for wrong data search
     if (phones.status == false) {
         document.getElementById('error-message2').style.display = 'block';
     }
     // getting data from api data array
-    const resultArea = document.getElementById('result-area');
-    resultArea.textContent = ''; // to remove previous search result
     const phoneData = phones.data;
     const phoneDataFirst20 = phoneData.slice(0, 20);
     phoneDataFirst20.forEach(phone => {
@@ -41,13 +43,13 @@ const displayResults = phones => {
         const eachResultDiv = document.createElement('div');
         eachResultDiv.classList.add('each-result');
         eachResultDiv.innerHTML = `
-            <div class="text-white shadow-2xl shadow-slate-600/50 border border-none rounded-xl flex flex-col justify-center bg-slate-50">
+            <div class="text-white shadow-xl shadow-slate-400/60 hover:scale-90 transition duration-500 ease-in-out border flex flex-col justify-center bg-slate-50">
                     <!-- Phone image -->
-                    <div class="bg-white px-3 py-12 flex justify-center">
+                    <div class="bg-white px-3 py-8 flex justify-center">
                         <img id="result-image" class="md:w-auto md:h-auto"
                             src="${phone.image}" alt="">
                     </div>
-                    <div class="bg-slate-600">
+                    <div class="bg-slate-600 pb-2 border border-slate-600">
                     <!-- phone name & brand name -->
                     <div class="pt-4">
                         <p id="phone-name" class="text-xl font-normal px-3 pl-3">${phone.phone_name}</p>
@@ -57,7 +59,7 @@ const displayResults = phones => {
                     <div class="p-3 pl-3 flex justify-start">
                         <a href="#top-section" class="no-underline">
                             <button onclick="getDetails('${phone.slug}')" id="detail-button"
-                            class="border rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-400/[0.4] hover:bg-cyan-500/[0.4] hover:text-white">Details
+                            class="border border-none rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-400/[0.4] hover:bg-cyan-500/[0.4] hover:text-white">Details
                             <i class="material-icons text-white">arrow_forward</i></button>
                         </a>
                     </div>
@@ -78,6 +80,7 @@ const getDetails = phoneId => {
 }
 const displayDetails = details => {
     const detailArea = document.getElementById('display-detail');
+    detailArea.textContent = '';
     const eachDetails = document.createElement('div');
     eachDetails.classList.add('eachDetail');
     detailArea.appendChild(eachDetails);
