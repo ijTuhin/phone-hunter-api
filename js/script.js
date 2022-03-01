@@ -2,7 +2,7 @@
 document.getElementById('error-message1').style.display = 'none';
 document.getElementById('error-message2').style.display = 'none';
 
-// -------------------*********** getting results from search box
+// -------------------*********** getting results from search box **************------------------------
 const getResults = () => {
     const searchBox = document.getElementById('search-box');
     const searchBoxValue = searchBox.value;
@@ -25,12 +25,13 @@ const getResults = () => {
     // clear the input field
     searchBox.value = '';
 }
-// -------------------*********** displaying searched result
+// -------------------*********** displaying the searched result **************------------------------
 const displayResults = phones => {
     const resultArea = document.getElementById('result-area');
     resultArea.textContent = '';
     const detailArea = document.getElementById('display-detail');
-    detailArea.textContent = '';// to remove previous search result
+    // to remove previous search result
+    detailArea.textContent = '';
     // showing error message for wrong data search
     if (phones.status == false) {
         document.getElementById('error-message2').style.display = 'block';
@@ -43,7 +44,7 @@ const displayResults = phones => {
         const eachResultDiv = document.createElement('div');
         eachResultDiv.classList.add('each-result');
         eachResultDiv.innerHTML = `
-            <div class="text-white shadow-xl shadow-slate-400/60 hover:scale-90 transition duration-500 ease-in-out border flex flex-col justify-center bg-slate-50">
+            <div class="text-white shadow-xl shadow-slate-400/60 md:hover:scale-90 hover:scale-90 transition duration-500 ease-in-out border flex flex-col justify-center bg-slate-50">
                     <!-- Phone image -->
                     <div class="bg-white px-3 py-8 flex justify-center">
                         <img id="result-image" class="md:w-auto md:h-auto"
@@ -71,13 +72,14 @@ const displayResults = phones => {
 }
 
 
-// -------------------*********** getting details from details button
+// ---------------------*********** getting details from details button **************------------------------
 const getDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayDetails(data));
 }
+// -------------------------************** displaying details on ui **************---------------------------
 const displayDetails = details => {
     const detailArea = document.getElementById('display-detail');
     detailArea.textContent = '';
@@ -144,7 +146,7 @@ const displayDetails = details => {
             `;
     }
 
-    // for no others info
+    // for no other info
     else if (details.data.others == undefined) {
         console.log('Others item not found');
         eachDetails.innerHTML = `
