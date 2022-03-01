@@ -2,7 +2,7 @@
 document.getElementById('error-message1').style.display = 'none';
 document.getElementById('error-message2').style.display = 'none';
 
-// getting results from search box
+// -------------------*********** getting results from search box
 const getResults = () => {
     const searchBox = document.getElementById('search-box');
     const searchBoxValue = searchBox.value;
@@ -21,12 +21,15 @@ const getResults = () => {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchBoxValue}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => displayResults(data));
+            .then(data => {
+                displayResults(data);
+                getPhoneId(data);
+            });
     }
     // clear the input field
     searchBox.value = '';
 }
-// displaying searched result
+// -------------------*********** displaying searched result
 const displayResults = phones => {
     // showing error message for wrong search
     if (phones.status == false) {
@@ -54,7 +57,7 @@ const displayResults = phones => {
                     </div>
                     <!-- details button -->
                     <div class="p-3 flex justify-start">
-                        <button id="detail-button"
+                        <button onclick="getDetails()" id="detail-button"
                             class="border border-none rounded w-28 p-2 shadow-sm focus:outline-none focus:ring-1 flex justify-between bg-cyan-500/[0.4] hover:bg-cyan-600 hover:text-white">Details
                             <i class="material-icons text-cyan-600 hover:text-white">arrow_forward</i></button>
                     </div>
@@ -62,5 +65,16 @@ const displayResults = phones => {
                 `;
         resultArea.appendChild(eachResultDiv);
     }
+}
 
+
+// -------------------*********** getting details from details button
+const getPhoneId = allId => {
+    for (const id of allId.data) {
+        console.log(id.slug);
+    }
+}
+const getDetails = () => {
+    console.log(getPhoneId(), 'details');
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
 }
